@@ -1,0 +1,16 @@
+version: "2.1"
+services:
+  ubnt:
+    image: ghcr.io/linuxserver/unifi-controller:LTS
+    container_name: unifi
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /data/:/config
+    ports:
+      - 3478:3478/udp
+      - 10001:10001/udp
+      - 8080:8080
+      - 8443:8443
+    restart: unless-stopped
